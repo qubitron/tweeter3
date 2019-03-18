@@ -7,17 +7,16 @@ from tweeter.models import Tweet, User
 from tweeter.permissions import IsAuthorOrReadOnly, IsSelfOrAdmin
 from tweeter.serializers import TweetSerializer, UserSerializer
 
-   
 def index(request):
     # If fixtures are loaded, let's always log in as the user Bob.
-    bob = User.objects.filter(first_name='Bob').first()
-    if bob:
-        login(request, bob)
+    nina = User.objects.filter(first_name='nina').first()
+    if nina:
+        login(request, nina)
 
     return render(request, 'tweeter/index.html')
 
 
-    
+
 class TweetViewSet(viewsets.ModelViewSet):
     queryset = Tweet.objects.all()
     serializer_class = TweetSerializer
