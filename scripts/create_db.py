@@ -3,7 +3,7 @@ import subprocess
 import urllib.request
 import dotenv
 
-dotenv.read_dotenv()
+dotenv.read_dotenv(os.getcwd() + "/.env")
 
 REQUIRED_ENV_VARS = (
     'DB_USER',
