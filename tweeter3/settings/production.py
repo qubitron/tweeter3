@@ -28,6 +28,23 @@ DATABASES = {
     }
 }
 
+# Need to explicitly enable logging for production configurations
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+        },
+    },
+}
+
 if os.environ.get('SEND_ADMIN_EMAILS'):
     # Optional Email Settings
     EMAIL_HOST = os.environ.get('EMAIL_HOST')
